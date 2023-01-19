@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+python-dotenv==0.21.0
+=======
+python-dotenv==0.21.0
+>>>>>>> 647a73d84a4557cef59ad06604f43736030ba118
+requests==2.21.0
