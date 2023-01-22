@@ -54,5 +54,4 @@ if __name__ == '__main__':
     load_dotenv()
     bitly_token = os.environ['BITLY_TOKEN']
 
-
     main()
