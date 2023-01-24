@@ -1,8 +1,10 @@
 import os
 import requests
+
+import argparse
 import urllib
 from dotenv import load_dotenv
-import argparse
+
 
 def shorten_link(token, user_url):
     payload = {'long_url': user_url}
@@ -13,6 +15,7 @@ def shorten_link(token, user_url):
     response.raise_for_status()
     bitlink = response.json()["link"]
     return bitlink
+
 
 def count_clicks(token, link):
     parsed_link = urllib.parse.urlparse(link)
@@ -35,16 +38,8 @@ def is_bitlink(token, user_url):
     response = requests.get(api_endpoint_url, headers=headers)
     return response.ok
 
+
 def main():
-    if is_bitlink(bitly_token, user_url):
-      print ('Link is bitlink')
-      print(f'Number of clicks: {count_clicks(bitly_token, user_url)}')
-    else:
-      print("Link is not bitlink")
-      print(f'Its bitlink is: {shorten_link(bitly_token, user_url)}')
-
-
-if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--user_url',
                     help='Define url',
@@ -54,4 +49,13 @@ if __name__ == '__main__':
     load_dotenv()
     bitly_token = os.environ['BITLY_TOKEN']
 
+    if is_bitlink(bitly_token, user_url):
+      print ('Link is bitlink')
+      print(f'Number of clicks: {count_clicks(bitly_token, user_url)}')
+    else:
+      print("Link is not bitlink")
+      print(f'Its bitlink is: {shorten_link(bitly_token, user_url)}')
+
+
+if __name__ == '__main__':
     main()
