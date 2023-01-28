@@ -41,7 +41,7 @@ def main():
     parser.add_argument(
         '--user_url',
         help='Define url',
-                     )
+    )
     args = parser.parse_args()
     user_url = args.user_url
     load_dotenv()
